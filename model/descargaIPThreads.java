@@ -1,4 +1,4 @@
-package es.upm.etsiinf.gib.myapplication.model;
+//tu package
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

@@ -8,7 +8,7 @@ Añadir libreria GSON:
 1. Seleccione en el proyecto build.gradle.kts (Module:app)
 2. Implementación de la libreria gson
 
-   implementation("com.google.code.gson:gson:2.13.2")
+   implementation("com.google.code.gson:gson:2.13.2") // La libreria puede estar desactualizada 
 
 3. Click derecho + Show content actions
 4. Sync now
@@ -27,12 +27,12 @@ Creación de la carpeta model
 
 Estructura del proyecto: 
 
-
-
-**kotlin+java**
-- algo.nombre_de_tu_app
-  - model
-    - descargalPThread.java
-    - IPs.java
-    - NetUtils.java
-  - MainActivity.kt
+**kotlin+java/**
+│
+├── algo.nombre_de_tu_app/
+│ ├── model
+│ │ ├── descargalPThread.java
+│ │ ├── IPs.java
+│ │ └── NetUtils.java
+│ └── MainActivity.kt
+└── README.md ← Explicación breve del proyecto

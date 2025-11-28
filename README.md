@@ -29,9 +29,10 @@ Estructura del proyecto: (Selecciona RAW arriba derecha para verlo claramente)
 Estructura del proyecto:
 
 kotlin+java
-└── algo.nombre_de_tu_app
-   ├── model
-   │   ├── descargalPThread.java
-   │   ├── IPs.java
-   │   └── NetUtils.java
-   └── MainActivity.kt
+**kotlin+java**
+- algo.nombre_de_tu_app
+  - model
+    - descargalPThread.java
+    - IPs.java
+    - NetUtils.java
+  - MainActivity.kt

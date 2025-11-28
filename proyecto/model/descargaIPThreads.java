@@ -1,47 +1,64 @@
 //tu package
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
-import java.util.Arrays;
-import java.util.List;
+public class descargaIPThread implements Runnable {
 
-public class descargaIPThread implements Runnable{
-    private String urlServerService;
-    private DescargaListener listener;
+    private final String urlString;
+    private final DescargaListener listener;
 
-    public interface DescargaListener {
-        void onDescargaCompletada(List<IPs> ipsList);
-        void onDescargaError(Exception e);
-    }
-
-    public descargaIPThread(String urlServerService, DescargaListener listener) {
-        this.urlServerService = urlServerService;
+    public descargaIPThread(String urlString, DescargaListener listener) {
+        this.urlString = urlString;
         this.listener = listener;
     }
 
     @Override
     public void run() {
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.setDateFormat("dd/MM/yyyy hh:mm a");
-        Gson gson = gsonBuilder.create();
-        String response = null;
-
+        HttpURLConnection connection = null;
         try {
-            response = NetUtils.getURLText(urlServerService);
-            List<IPs> ipsList = Arrays.asList(gson.fromJson(response, IPs[].class));
+            URL url = new URL(urlString);
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(5000);
 
-            // Notificar éxito
-            if (listener != null) {
-                listener.onDescargaCompletada(ipsList);
+            int responseCode = connection.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                InputStreamReader reader = new InputStreamReader(connection.getInputStream());
+
+                Gson gson = new Gson();
+                // Cambio importante: deserializar un solo objeto IPs, no una lista
+                IPs ipData = gson.fromJson(reader, IPs.class);
+
+                reader.close();
+
+                if (ipData != null) {
+                    // Enviamos un array con un solo elemento
+                    listener.onDescargaCompletada(java.util.Arrays.asList(ipData));
+                } else {
+                    listener.onDescargaError(new Exception("No se pudo parsear la respuesta"));
+                }
+            } else {
+                listener.onDescargaError(new Exception("Error HTTP: " + responseCode));
             }
-
         } catch (Exception e) {
-            e.printStackTrace();
-            // Notificar error
-            if (listener != null) {
-                listener.onDescargaError(e);
+            listener.onDescargaError(e);
+        } finally {
+            if (connection != null) {
+                connection.disconnect();
             }
+        }
+    }
+
+    public interface DescargaListener {
+        void onDescargaCompletada(java.util.List<IPs> ipsList);
+        void onDescargaError(Exception e);
+    }
+}
+
         }
     }
 }

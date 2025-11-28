@@ -1,3 +1,5 @@
+
+
 // tu package
 
 import android.os.Bundle
@@ -10,8 +12,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import es.upm.etsiinf.gib.myapplication.model.IPs
-import es.upm.etsiinf.gib.myapplication.model.descargaIPThread
+import com.example.miproyecto.model.IPs
+import com.example.miproyecto.model.descargaIPThread
+
 
 class MainActivity : AppCompatActivity(), descargaIPThread.DescargaListener {
 
@@ -34,7 +37,7 @@ class MainActivity : AppCompatActivity(), descargaIPThread.DescargaListener {
 
         listView = findViewById(R.id.main_list_view)
         button = findViewById<Button>(R.id.button)
-        editText = findViewById<EditText>(R.id.editTextText)
+        editText = findViewById<EditText>(R.id.textoDeIP)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -50,7 +53,6 @@ class MainActivity : AppCompatActivity(), descargaIPThread.DescargaListener {
         }
 
     }
-
     private fun startDownload(){
 
         val ip = editText.text.toString().trim()
@@ -72,8 +74,10 @@ class MainActivity : AppCompatActivity(), descargaIPThread.DescargaListener {
             ipsList.forEach { ip ->
                 val ipInfo = """
                 IP: ${ip.ip}
+                Tipo: ${ip.type}
                 País: ${ip.country_name}
                 Ciudad: ${ip.city}
+                Código Postal: ${ip.zip}
                 """.trimIndent()
                 listaIPs.add(ipInfo)
 
@@ -87,8 +91,9 @@ class MainActivity : AppCompatActivity(), descargaIPThread.DescargaListener {
     override fun onDescargaError(e: Exception) {
         // Esto se ejecuta en el background thread, necesitamos ir al UI thread
         runOnUiThread {
-            Toast.makeText(this, "Error en la descarga: ${e.message}", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()
             e.printStackTrace()
         }
     }
 }
+// https://www.youtube.com/watch?v=Bl6gKxtqBw0 1.59

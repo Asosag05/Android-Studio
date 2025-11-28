@@ -30,11 +30,11 @@ Estructura del proyecto:
 kotlin+java/
 │
 ├── algo.nombre_de_tu_app/
-│ ├── model
-│ │ ├── descargalPThread.java
-│ │ ├── IPs.java
-│ │ └── NetUtils.java
-│ └── MainActivity.kt
+│    ├── model
+│    │    ├── descargalPThread.java
+│    │    ├── IPs.java
+│    │    └── NetUtils.java
+│    └── MainActivity.kt
 │
 └── README.md
 ```

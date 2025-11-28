@@ -1,8 +1,13 @@
-//tu package
+// tu package
 
 import com.google.gson.annotations.SerializedName;
 
+//CODIGO PARA EL JSON
 public class IPs {
+
+    @SerializedName("success")
+    private Boolean success;
+
     @SerializedName("ip")
     private String ip;
 
@@ -21,6 +26,36 @@ public class IPs {
     @SerializedName("zip")
     private String zip;
 
+    @SerializedName("error")
+    private ErrorData error; // Solo con code
+
+    // Clase interna para mapear el objeto error
+    public static class ErrorData {
+        @SerializedName("code")
+        private int code;
+
+        public int getCode() {
+            return code;
+        }
+
+        public void setCode(int code) {
+            this.code = code;
+        }
+    }
+
+    public boolean isSuccess() {
+        // Si success es null, lo asumimos true
+        return success == null || success;
+    }
+
+    public int getCode() {
+        if (error != null) {
+            return error.getCode();
+        }
+        return 0;
+    }
+
+    // Getters y setters básicos
     public String getIp() {
         return ip;
     }
@@ -45,6 +80,10 @@ public class IPs {
         return zip;
     }
 
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
     public void setIp(String ip) {
         this.ip = ip;
     }
@@ -67,5 +106,9 @@ public class IPs {
 
     public void setZip(String zip) {
         this.zip = zip;
+    }
+
+    public void setError(ErrorData error) {
+        this.error = error;
     }
 }

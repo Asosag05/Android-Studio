@@ -27,7 +27,8 @@ Creación de la carpeta model
 
 Estructura del proyecto: 
 
-kotlin+java
+
+
 **kotlin+java**
 - algo.nombre_de_tu_app
   - model

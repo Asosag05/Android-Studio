@@ -35,5 +35,6 @@ kotlin+java/
 │ │ ├── IPs.java
 │ │ └── NetUtils.java
 │ └── MainActivity.kt
-└── README.md ← Explicación breve del proyecto
+│
+└── README.md
 ```

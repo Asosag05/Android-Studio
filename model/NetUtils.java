@@ -1,4 +1,4 @@
-package es.upm.etsiinf.gib.myapplication.model;
+//tu package
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

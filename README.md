@@ -26,10 +26,12 @@ Creación de la carpeta model
 3. Llamar al package "model"
 
 Estructura del proyecto: (Selecciona RAW arriba derecha para verlo claramente)
+Estructura del proyecto:
+
 kotlin+java
 └── algo.nombre_de_tu_app
    ├── model
-         ├── descargalPThread.java
-         ├── IPS.java
-         └── NetUtils.java
+   │   ├── descargalPThread.java
+   │   ├── IPs.java
+   │   └── NetUtils.java
    └── MainActivity.kt

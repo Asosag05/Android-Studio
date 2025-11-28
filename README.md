@@ -28,8 +28,8 @@ Creación de la carpeta model
 Estructura del proyecto:
 kotlin+java
 └── algo.nombre_de_tu_app
-    ├── model
-        ├── descargalPThread.java
-        ├── IPS.java
-        └── NetUtils.java
-    └── MainActivity.kt
+   ├── model
+         ├── descargalPThread.java
+         ├── IPS.java
+         └── NetUtils.java
+   └── MainActivity.kt

@@ -1,10 +1,13 @@
 //tu package
 
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 public class NetUtils {
+
+    //CODIGO COPIADO DE MOODLE
     public static String getURLText(String url) throws Exception {
         URL website = new URL(url);
         URLConnection connection = website.openConnection();

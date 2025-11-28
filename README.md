@@ -25,7 +25,7 @@ Creación de la carpeta model
 2. Click derecho sobre la carpeta -> new -> Package
 3. Llamar al package "model"
 
-Estructura del proyecto:
+Estructura del proyecto: (Selecciona RAW arriba derecha para verlo claramente)
 kotlin+java
 └── algo.nombre_de_tu_app
    ├── model

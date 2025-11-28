@@ -26,7 +26,7 @@ Creación de la carpeta model
 3. Llamar al package "model"
 
 Estructura del proyecto: 
-
+```markdown
 kotlin+java/
 │
 ├── algo.nombre_de_tu_app/
@@ -36,3 +36,4 @@ kotlin+java/
 │ │ └── NetUtils.java
 │ └── MainActivity.kt
 └── README.md ← Explicación breve del proyecto
+```
